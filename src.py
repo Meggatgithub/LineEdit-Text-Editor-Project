@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 import tkinter.font
 from tkinter import messagebox
+from tkinter import colorchooser
 
 
 # Add the "Format" menu to the menu bar
@@ -44,6 +45,7 @@ class TextEditor:
         self.format_menu.add_checkbutton(label="Bold", command=self.toggle_bold)
         self.format_menu.add_checkbutton(label="Italic", command=self.toggle_italic)
         self.format_menu.add_checkbutton(label="Underline", command=self.toggle_underline)
+        self.format_menu.add_command(label="Change Color", command=self.change_color)
 
         # Create a submenu for font selection
         self.font_menu = tk.Menu(self.format_menu, tearoff=0)
@@ -136,10 +138,12 @@ class TextEditor:
        self.text.delete(1.0, tk.END)
 
     def about(self):
-        messagebox.showinfo("About LineEdit", "LineEdit is a simple text editor made by Meggatgithub and Jishnugb. for more info, visit LineEdit's GitHub repository:") 
+        messagebox.showinfo("About LineEdit", "LineEdit is a simple text editor made by Meggatgithub and Jishnugb. for more info, visit LineEdit's GitHub repository: https://github.com/Meggatgithub/LineEdit-Project")
 
-
-
+    def change_color(self):
+        color = colorchooser.askcolor()[1]
+        if color:
+                self.text.config(fg=color) 
 
 
 
